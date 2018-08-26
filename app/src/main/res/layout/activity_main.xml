@@ -149,7 +149,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_gravity="center"
-            android:paddingBottom="20dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
             android:text="내번호 확인(QR Scan)"/>
 
         <ListView

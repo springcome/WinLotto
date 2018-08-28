@@ -43,7 +43,9 @@ public class QRScanParse {
 
         List<String> list = new ArrayList<String>();
 
+        // TODO 조회되는 기기에 따라(또는 android version) 중간구분자가 다르게 Scan되는것을 확인 - 원인은 찾지 못했으며 임시 해결책으로 확인된 구분자만 처리하도록함
         String contents = splitAll[1].replace("q", "");
+        contents = contents.replace("m", "");
         list.add(contents.substring(0, 4));
         contents = contents.substring(4);
         while(contents.length() > 12) {

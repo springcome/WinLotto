@@ -21,6 +21,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import net.springcome.winlotto.adapter.LottoScanArrayAdapter;
+import net.springcome.winlotto.adapter.LottoScanBaseAdapter;
 import net.springcome.winlotto.api.LottoQuery;
 import net.springcome.winlotto.entity.LottoWin;
 import net.springcome.winlotto.utils.LottoUtils;
@@ -120,11 +121,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        Log.i(LOG_TAG, result.getContents());
-        if (result != null) {
+        if (result != null && result.getContents() != null) {
             List<LottoWin> winNumberList = QRScanParse.parseLottoNumber(result.getContents());
             ListView listView = findViewById(R.id.list_qr_result);
-            listView.setAdapter(new LottoScanArrayAdapter(this, R.id.list_item_main, winNumberList));
+            listView.setAdapter(new LottoScanBaseAdapter(getApplicationContext(), winNumberList));
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }

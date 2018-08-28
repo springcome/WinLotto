@@ -99,6 +99,7 @@
                 android:layout_marginRight="5dp"
                 tools:text="45"/>
 
+
             <TextView
                 android:id="@+id/view_drwtNo5"
                 android:layout_width="36dp"

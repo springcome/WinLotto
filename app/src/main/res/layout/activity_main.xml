@@ -152,12 +152,17 @@
             android:layout_gravity="center"
             android:background="@color/colorPrimary"
             android:textColor="@android:color/white"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:text="내번호 확인(QR Scan)"/>
 
         <ListView
             android:id="@+id/list_qr_result"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:paddingTop="16dp"
+            android:paddingLeft="16dp"/>
     </LinearLayout>
 
 

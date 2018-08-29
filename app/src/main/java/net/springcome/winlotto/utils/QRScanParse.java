@@ -20,7 +20,6 @@ public class QRScanParse {
 
         String drwNo = parseContent[0].toString();
 
-
         for (int i = 1; i <= parseContent.length-1; i++) {
             if (i == parseContent.length-1) continue;
 

@@ -28,6 +28,9 @@ public class QRScanParse {
             lotto.setDrwNo(drwNo);
 
             String num = parseContent[i].toString();
+
+            if (num.substring(0, 2).equals("00")) continue;
+
             lotto.setDrwtNo1(num.substring(0, 2));
             lotto.setDrwtNo2(num.substring(2, 4));
             lotto.setDrwtNo3(num.substring(4, 6));
@@ -46,9 +49,10 @@ public class QRScanParse {
 
         List<String> list = new ArrayList<String>();
 
-        // TODO 조회되는 기기에 따라(또는 android version) 중간구분자가 다르게 Scan되는것을 확인 - 원인은 찾지 못했으며 임시 해결책으로 확인된 구분자만 처리하도록함
+        // q : 자동게임, m : 수동게임, n : 없는게임
         String contents = splitAll[1].replace("q", "");
         contents = contents.replace("m", "");
+        contents = contents.replace("n", "");
         list.add(contents.substring(0, 4));
         contents = contents.substring(4);
         while(contents.length() > 12) {

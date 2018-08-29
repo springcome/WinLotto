@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QRScanParse {
+    private static final String LOG_TAG = QRScanParse.class.getSimpleName();
 
+    // http://qr.nlotto.co.kr/?v=0793m040515222326m121619203844m112223363744m202730363741m0709111235451581497433    // Real QRCode scan value
+    // http://qr.nlotto.co.kr/?v=0793m101521353843m101521313843m102021353843m101520353743m1016213639431581497433    // Test QRCode scan value
     public static List<LottoWin> parseLottoNumber(String qrContent) {
         Object [] parseContent = parseQRContent(qrContent);
 

@@ -147,9 +147,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 lottoQuery.setDrwNo(drwNo);
                 getSupportLoaderManager().initLoader(0, null, this).forceLoad();
             }
-
-//            ListView listView = findViewById(R.id.list_qr_result);
-//            listView.setAdapter(new LottoScanBaseAdapter(getApplicationContext(), lottoWin, winNumberList));
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }

@@ -12,6 +12,8 @@ import net.springcome.winlotto.R;
 import net.springcome.winlotto.entity.LottoWin;
 import net.springcome.winlotto.utils.LottoUtils;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class LottoScanBaseAdapter extends BaseAdapter {
@@ -42,10 +44,17 @@ public class LottoScanBaseAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        String [] gameNoArr = {"A", "B", "C", "D", "E"};
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.list_item_main, null);
         }
+
+        TextView gameNo = view.findViewById(R.id.view_game_no);
+        gameNo.setText(gameNoArr[i]);
+
+        TextView compareResult = view.findViewById(R.id.view_compare_result);
+        compareResult.setText(LottoUtils.winResult(lottoWin, listData.get(i)));
 
         TextView scanNo1 = view.findViewById(R.id.view_scanNo1);
         scanNo1.setText(listData.get(i).getDrwtNo1());

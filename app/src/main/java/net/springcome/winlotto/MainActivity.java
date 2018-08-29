@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private IntentIntegrator qrCodeScan;
 
     private LottoQuery lottoQuery;
+    List<LottoWin> winNumberList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(@NonNull Loader<LottoWin> loader, LottoWin data) {
-        if (data != null) updateUI(data);
+        if (data != null) {
+            updateUI(data);
+        }
     }
 
     @Override
@@ -83,6 +86,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
     private void updateUI(LottoWin data) {
+        if (winNumberList != null) {
+            ListView listView = findViewById(R.id.list_qr_result);
+            listView.setAdapter(new LottoScanBaseAdapter(getApplicationContext(), data, winNumberList));
+        }
+
         TextView viewDrwNo = findViewById(R.id.view_drwNo);
         viewDrwNo.setText(data.getDrwNo());
 
@@ -130,9 +138,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null && result.getContents() != null) {
-            List<LottoWin> winNumberList = QRScanParse.parseLottoNumber(result.getContents());
-            ListView listView = findViewById(R.id.list_qr_result);
-            listView.setAdapter(new LottoScanBaseAdapter(getApplicationContext(), winNumberList));
+            winNumberList = QRScanParse.parseLottoNumber(result.getContents());
 
             // Scan한 회차번호
             String drwNo = winNumberList.get(0).getDrwNo();
@@ -141,6 +147,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 lottoQuery.setDrwNo(drwNo);
                 getSupportLoaderManager().initLoader(0, null, this).forceLoad();
             }
+
+//            ListView listView = findViewById(R.id.list_qr_result);
+//            listView.setAdapter(new LottoScanBaseAdapter(getApplicationContext(), lottoWin, winNumberList));
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }

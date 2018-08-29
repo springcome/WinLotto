@@ -52,9 +52,34 @@ public class LottoUtils {
         } else if (30 < no && 40 >= no) {
             // 검정
             return Color.BLACK;
-        } else {
+        } else if (40  < no && 45 >= no) {
             // 초록
             return Color.GREEN;
+        } else {
+            // 흰색
+            return Color.WHITE;
+        }
+    }
+
+    public static final int compareWinNumber(LottoWin lottoWin, String compareNum) {
+        if (lottoWin != null) {
+            if (Integer.parseInt(lottoWin.getDrwtNo1()) == Integer.parseInt(compareNum)) {
+                return getLottoColor(Integer.parseInt(compareNum));
+            } else if (Integer.parseInt(lottoWin.getDrwtNo2()) == Integer.parseInt(compareNum)) {
+                return getLottoColor(Integer.parseInt(compareNum));
+            } else if (Integer.parseInt(lottoWin.getDrwtNo3()) == Integer.parseInt(compareNum)) {
+                return getLottoColor(Integer.parseInt(compareNum));
+            } else if (Integer.parseInt(lottoWin.getDrwtNo4()) == Integer.parseInt(compareNum)) {
+                return getLottoColor(Integer.parseInt(compareNum));
+            } else if (Integer.parseInt(lottoWin.getDrwtNo5()) == Integer.parseInt(compareNum)) {
+                return getLottoColor(Integer.parseInt(compareNum));
+            } else if (Integer.parseInt(lottoWin.getDrwtNo6()) == Integer.parseInt(compareNum)) {
+                return getLottoColor(Integer.parseInt(compareNum));
+            } else {
+                return getLottoColor(0);
+            }
+        } else {
+            return getLottoColor(0);
         }
     }
 }

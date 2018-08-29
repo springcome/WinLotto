@@ -14,20 +14,24 @@ public class LottoUtils {
      * 최신 당첨 회차 계산
      * @return
      */
-    public static final String currentDrwNo() {
-        // 조정수
-        int adjustNum = 1;
+    public static final String currentDrwNo(String drwNo) {
+        if (drwNo == null) {
+            // 조정수
+            int adjustNum = 1;
 
-        // 로또 시작일 2002.12.07 - 1회
-        Calendar cal = Calendar.getInstance();
-        cal.set(2002, 11, 07);
+            // 로또 시작일 2002.12.07 - 1회
+            Calendar cal = Calendar.getInstance();
+            cal.set(2002, 11, 07);
 
-        // 현재일자
-        Calendar nowCal = Calendar.getInstance();
+            // 현재일자
+            Calendar nowCal = Calendar.getInstance();
 
-        long currentDrwNo = ((nowCal.getTimeInMillis()-cal.getTimeInMillis())/(1000*60*60*24*7)) + adjustNum;
+            long currentDrwNo = ((nowCal.getTimeInMillis() - cal.getTimeInMillis()) / (1000 * 60 * 60 * 24 * 7)) + adjustNum;
 
-        return Long.toString(currentDrwNo);
+            return Long.toString(currentDrwNo);
+        } else {
+            return drwNo;
+        }
     }
 
     /**

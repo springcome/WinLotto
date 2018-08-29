@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private IntentIntegrator qrCodeScan;
 
+    private LottoQuery lottoQuery;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +62,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @NonNull
     @Override
     public Loader<LottoWin> onCreateLoader(int id, @Nullable Bundle args) {
-        return new LottoQuery(this);
+//        return new LottoQuery(this, null);
+        return initLoader();
+    }
+
+    private Loader<LottoWin> initLoader() {
+        lottoQuery = new LottoQuery(this);
+        return lottoQuery;
     }
 
     @Override
@@ -125,6 +133,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             List<LottoWin> winNumberList = QRScanParse.parseLottoNumber(result.getContents());
             ListView listView = findViewById(R.id.list_qr_result);
             listView.setAdapter(new LottoScanBaseAdapter(getApplicationContext(), winNumberList));
+
+            // Scan한 회차번호
+            String drwNo = winNumberList.get(0).getDrwNo();
+            // Scan한 회차번호와 가장최근 회차번호가 일치 하지 않을때만 당첨정보를 다시 조회한다.
+            if (!LottoUtils.currentDrwNo(null).equals(drwNo)) {
+                lottoQuery.setDrwNo(drwNo);
+                getSupportLoaderManager().initLoader(0, null, this).forceLoad();
+            }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }

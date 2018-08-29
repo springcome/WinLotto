@@ -24,15 +24,20 @@ import java.nio.charset.Charset;
 
 public class LottoQuery extends AsyncTaskLoader<LottoWin> {
     private final static String LOG_TAG = LottoQuery.class.getSimpleName();
+    private String drwNo;
 
     public LottoQuery(@NonNull Context context) {
         super(context);
     }
 
+    public void setDrwNo(String drwNo) {
+        this.drwNo = drwNo;
+    }
+
     @Nullable
     @Override
     public LottoWin loadInBackground() {
-        String requestUrl = "http://www.nlotto.co.kr/common.do?method=getLottoNumber&drwNo=" + LottoUtils.currentDrwNo();
+        String requestUrl = "http://www.nlotto.co.kr/common.do?method=getLottoNumber&drwNo=" + LottoUtils.currentDrwNo(drwNo);
 
         return fetchLottoData(requestUrl);
     }

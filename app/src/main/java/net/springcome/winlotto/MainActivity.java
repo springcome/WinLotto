@@ -30,6 +30,8 @@ import net.springcome.winlotto.entity.LottoWin;
 import net.springcome.winlotto.utils.LottoUtils;
 import net.springcome.winlotto.utils.QRScanParse;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,9 +104,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         TextView viewDrwNo = findViewById(R.id.view_drwNo);
         viewDrwNo.setText(data.getDrwNo());
 
-        TextView viewDrwDate = findViewById(R.id.view_drwDate);
-        viewDrwDate.setText("["+data.getDrwNoDate()+"]");
+//        TextView viewDrwDate = findViewById(R.id.view_drwDate);
+//        viewDrwDate.setText("["+data.getDrwNoDate()+"]");
 
+        TextView viewFirstPrzwnerCo = findViewById(R.id.view_first_przwner_co);
+        viewFirstPrzwnerCo.setText(data.getFirstPrzwnerCo());
+        TextView viewFirstAccumamnt = findViewById(R.id.view_first_accumamnt);
+        viewFirstAccumamnt.setText(LottoUtils.formatPrice(data.getFirstAccumamnt()));
+        TextView viewFirstWinamnt = findViewById(R.id.view_first_winamnt);
+        viewFirstWinamnt.setText(LottoUtils.formatPrice(data.getFirstWinamnt()));
 
         TextView viewDrwtNo1 = findViewById(R.id.view_drwtNo1);
         viewDrwtNo1.setText(data.getDrwtNo1());

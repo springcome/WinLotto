@@ -5,6 +5,7 @@ import android.graphics.drawable.GradientDrawable;
 
 import net.springcome.winlotto.entity.LottoWin;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -155,5 +156,15 @@ public class LottoUtils {
         GradientDrawable g = new GradientDrawable(GradientDrawable.Orientation.BL_TR, colors);
         g.setCornerRadius(64);
         return g;
+    }
+
+    /**
+     * 금액 Format
+     * @param price
+     * @return
+     */
+    public static String formatPrice(String price) {
+        DecimalFormat df = new DecimalFormat("###,###");
+        return df.format(Long.parseLong(price));
     }
 }

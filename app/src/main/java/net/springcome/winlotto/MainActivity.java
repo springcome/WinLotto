@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -27,6 +29,7 @@ import net.springcome.winlotto.entity.LottoWin;
 import net.springcome.winlotto.utils.LottoUtils;
 import net.springcome.winlotto.utils.QRScanParse;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<LottoWin> {
@@ -86,10 +89,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
     private void updateUI(LottoWin data) {
-        if (winNumberList != null) {
-            ListView listView = findViewById(R.id.list_qr_result);
-            listView.setAdapter(new LottoScanBaseAdapter(getApplicationContext(), data, winNumberList));
+        ListView listView = findViewById(R.id.list_qr_result);
+        if (data.getDrwNo() == null) {
+            Snackbar.make(listView, "아직 추첨되지 않은 게임입니다.", Snackbar.LENGTH_LONG).show();
+            listView.setAdapter(new LottoScanBaseAdapter(getApplicationContext(), new LottoWin(), new ArrayList<LottoWin>()));
+            return;
         }
+        if (winNumberList != null)
+            listView.setAdapter(new LottoScanBaseAdapter(getApplicationContext(), data, winNumberList));
 
         TextView viewDrwNo = findViewById(R.id.view_drwNo);
         viewDrwNo.setText(data.getDrwNo());

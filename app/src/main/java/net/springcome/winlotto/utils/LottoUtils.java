@@ -1,6 +1,7 @@
 package net.springcome.winlotto.utils;
 
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 
 import net.springcome.winlotto.entity.LottoWin;
 
@@ -142,5 +143,17 @@ public class LottoUtils {
         } else {
             return "-";
         }
+    }
+
+    /**
+     * Lotto Ball에 Gradation 및 원형태 만들기
+     * @param startColor
+     * @return
+     */
+    public static GradientDrawable makeLottoBall(int startColor) {
+        int [] colors = {startColor, Color.WHITE};
+        GradientDrawable g = new GradientDrawable(GradientDrawable.Orientation.BL_TR, colors);
+        g.setCornerRadius(64);
+        return g;
     }
 }

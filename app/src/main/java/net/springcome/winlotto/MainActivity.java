@@ -2,6 +2,7 @@ package net.springcome.winlotto;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -107,38 +108,31 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         TextView viewDrwtNo1 = findViewById(R.id.view_drwtNo1);
         viewDrwtNo1.setText(data.getDrwtNo1());
-        GradientDrawable lottoNo1 = (GradientDrawable) viewDrwtNo1.getBackground();
-        lottoNo1.setColor(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo1())));
+        viewDrwtNo1.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo1()))));
 
         TextView viewDrwtNo2 = findViewById(R.id.view_drwtNo2);
         viewDrwtNo2.setText(data.getDrwtNo2());
-        GradientDrawable lottoNo2 = (GradientDrawable) viewDrwtNo2.getBackground();
-        lottoNo2.setColor(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo2())));
+        viewDrwtNo2.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo2()))));
 
         TextView viewDrwtNo3 = findViewById(R.id.view_drwtNo3);
         viewDrwtNo3.setText(data.getDrwtNo3());
-        GradientDrawable lottoNo3 = (GradientDrawable) viewDrwtNo3.getBackground();
-        lottoNo3.setColor(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo3())));
+        viewDrwtNo3.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo3()))));
 
         TextView viewDrwtNo4 = findViewById(R.id.view_drwtNo4);
         viewDrwtNo4.setText(data.getDrwtNo4());
-        GradientDrawable lottoNo4 = (GradientDrawable) viewDrwtNo4.getBackground();
-        lottoNo4.setColor(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo4())));
+        viewDrwtNo4.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo4()))));
 
         TextView viewDrwtNo5 = findViewById(R.id.view_drwtNo5);
         viewDrwtNo5.setText(data.getDrwtNo5());
-        GradientDrawable lottoNo5 = (GradientDrawable) viewDrwtNo5.getBackground();
-        lottoNo5.setColor(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo5())));
+        viewDrwtNo5.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo5()))));
 
         TextView viewDrwtNo6 = findViewById(R.id.view_drwtNo6);
         viewDrwtNo6.setText(data.getDrwtNo6());
-        GradientDrawable lottoNo6 = (GradientDrawable) viewDrwtNo6.getBackground();
-        lottoNo6.setColor(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo6())));
+        viewDrwtNo6.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo6()))));
 
         TextView viewBnusNo = findViewById(R.id.view_bnusNo);
         viewBnusNo.setText(data.getBnusNo());
-        GradientDrawable bnusNo = (GradientDrawable) viewBnusNo.getBackground();
-        bnusNo.setColor(LottoUtils.getLottoColor(Integer.parseInt(data.getBnusNo())));
+        viewBnusNo.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getBnusNo()))));
     }
 
     @Override

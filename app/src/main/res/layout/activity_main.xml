@@ -8,7 +8,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/defaultBackground"
         android:orientation="vertical">
 
         <!-- 당첨정보 표시 Layout -->

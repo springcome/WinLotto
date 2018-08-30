@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="winTextNormal">#DEDEDE</color>
     <color name="winTextSpecial">#FFFFFF</color>
+    <color name="defaultBackground">#C5CAE9</color>
 </resources>

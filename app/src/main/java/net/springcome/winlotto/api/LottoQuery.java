@@ -25,9 +25,11 @@ import java.nio.charset.Charset;
 public class LottoQuery extends AsyncTaskLoader<LottoWin> {
     private final static String LOG_TAG = LottoQuery.class.getSimpleName();
     private String drwNo;
+    private Context context;
 
     public LottoQuery(@NonNull Context context) {
         super(context);
+        this.context = context;
     }
 
     public void setDrwNo(String drwNo) {
@@ -42,7 +44,7 @@ public class LottoQuery extends AsyncTaskLoader<LottoWin> {
         return fetchLottoData(requestUrl);
     }
 
-    public static LottoWin fetchLottoData(String requestUrl) {
+    public LottoWin fetchLottoData(String requestUrl) {
         LottoWin lotto = null;
         try {
             lotto = extractFeatureFormJson(makeHttpRequest(createUrl(requestUrl)));
@@ -83,12 +85,18 @@ public class LottoQuery extends AsyncTaskLoader<LottoWin> {
         return jsonResponse;
     }
 
-    private static LottoWin extractFeatureFormJson(String lottoJSON) {
+    private LottoWin extractFeatureFormJson(String lottoJSON) {
         LottoWin lotto = null;
         try {
             lotto = new LottoWin();
 
             JSONObject info = new JSONObject(lottoJSON);
+
+            if (info.getString("returnValue").equals("fail")) {
+                setDrwNo(String.valueOf(Integer.parseInt(LottoUtils.currentDrwNo(drwNo))-1));
+                return loadInBackground();
+            }
+
             lotto.setDrwNo(info.getString("drwNo"));
             lotto.setBnusNo(info.getString("bnusNo"));
             lotto.setFirstAccumamnt(info.getString("firstAccumamnt"));
@@ -102,6 +110,7 @@ public class LottoQuery extends AsyncTaskLoader<LottoWin> {
             lotto.setDrwtNo5(info.getString("drwtNo5"));
             lotto.setDrwtNo6(info.getString("drwtNo6"));
             lotto.setDrwNoDate(info.getString("drwNoDate"));
+            lotto.setReturnValue(info.getString("returnValue"));
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage());
         } catch (Exception e) {

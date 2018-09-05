@@ -12,230 +12,47 @@
         android:background="@color/defaultBackground"
         android:orientation="vertical">
 
-        <!-- 당첨정보 표시 Layout -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/win_area_background"
-            android:orientation="vertical"
-            android:paddingBottom="10dp">
+       <include
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           layout="@layout/display_win_information"/>
 
-            <!-- 당첨정보 [회차] -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/view_drwNo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textStyle="bold"
-                    android:textSize="30sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp"
-                    android:text="회 당첨번호"/>
-            </LinearLayout>
-
-            <!-- 당첨정보 [당첨번호] -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/view_drwtNo1"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:gravity="center"
-                    android:textColor="@android:color/darker_gray"
-                    android:layout_gravity="center_vertical"
-                    android:text="0"
-                    android:background="@drawable/lotto_circle"
-                    android:textSize="16sp"
-                    android:layout_marginRight="5dp"
-                    tools:text="45"/>
-
-                <TextView
-                    android:id="@+id/view_drwtNo2"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:gravity="center"
-                    android:textColor="@android:color/darker_gray"
-                    android:layout_gravity="center_vertical"
-                    android:text="0"
-                    android:background="@drawable/lotto_circle"
-                    android:textSize="16sp"
-                    android:layout_marginRight="5dp"
-                    tools:text="45"/>
-
-                <TextView
-                    android:id="@+id/view_drwtNo3"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:gravity="center"
-                    android:textColor="@android:color/darker_gray"
-                    android:layout_gravity="center_vertical"
-                    android:text="0"
-                    android:background="@drawable/lotto_circle"
-                    android:textSize="16sp"
-                    android:layout_marginRight="5dp"
-                    tools:text="45"/>
-
-                <TextView
-                    android:id="@+id/view_drwtNo4"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:gravity="center"
-                    android:textColor="@android:color/darker_gray"
-                    android:layout_gravity="center_vertical"
-                    android:text="0"
-                    android:background="@drawable/lotto_circle"
-                    android:textSize="16sp"
-                    android:layout_marginRight="5dp"
-                    tools:text="45"/>
-
-
-                <TextView
-                    android:id="@+id/view_drwtNo5"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:gravity="center"
-                    android:textColor="@android:color/darker_gray"
-                    android:layout_gravity="center_vertical"
-                    android:text="0"
-                    android:background="@drawable/lotto_circle"
-                    android:textSize="16sp"
-                    android:layout_marginRight="5dp"
-                    tools:text="45"/>
-
-                <TextView
-                    android:id="@+id/view_drwtNo6"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:gravity="center"
-                    android:textColor="@android:color/darker_gray"
-                    android:layout_gravity="center_vertical"
-                    android:text="0"
-                    android:background="@drawable/lotto_circle"
-                    android:textSize="16sp"
-                    tools:text="45"/>
-
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/baseline_add_black_36dp"/>
-
-                <TextView
-                    android:id="@+id/view_bnusNo"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:gravity="center"
-                    android:textColor="@android:color/darker_gray"
-                    android:layout_gravity="center_vertical"
-                    android:text="0"
-                    android:background="@drawable/lotto_circle"
-                    android:textSize="16sp"
-                    tools:text="45"/>
-            </LinearLayout>
-
-            <!-- 당첨정보 [금액 정보] -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:gravity="center"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/winTextNormal"
-                    android:text="1등 "/>
-                <TextView
-                    android:id="@+id/view_first_przwner_co"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/winTextSpecial"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/winTextNormal"
-                    android:text="게임 총 당첨금액 [ "/>
-                <TextView
-                    android:id="@+id/view_first_accumamnt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/winTextSpecial"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/winTextNormal"
-                    android:text=" ]원"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:gravity="center"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/winTextNormal"
-                    android:text="(1게임당 당첨금액 [ "/>
-                <TextView
-                    android:id="@+id/view_first_winamnt"
-                    android:layout_width="wrap_content"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/winTextSpecial"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/winTextNormal"
-                    android:text=" ]원)"/>
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_qrCodeScan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:background="@color/colorPrimary"
-                android:textColor="@android:color/white"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:text="내번호 확인(QR Scan)"/>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_margin="5dp">
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/btn_qr_code_scan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_qr_code_96"
+                    android:text="@string/label_check_win_number_qr_code" />
+                <Button
+                    android:id="@+id/btn_manual_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ic_finger_click_96"
+                    android:text="@string/label_check_win_number_manual" />
+            </TableRow>
 
-            <ListView
-                android:id="@+id/list_qr_result"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@null"
-                android:paddingTop="16dp"
-                android:paddingLeft="16dp"/>
-
-        </LinearLayout>
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/btn_make_win_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="로또번호 생성기" />
+            </TableRow>
+        </TableLayout>
 
 
     </LinearLayout>

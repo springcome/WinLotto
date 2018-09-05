@@ -26,8 +26,9 @@ public class LottoQuery extends AsyncTaskLoader<LottoWin> {
     private final static String LOG_TAG = LottoQuery.class.getSimpleName();
     private String drwNo;
 
-    public LottoQuery(@NonNull Context context) {
+    public LottoQuery(@NonNull Context context, String drwNo) {
         super(context);
+        this.drwNo = drwNo;
     }
 
     public void setDrwNo(String drwNo) {

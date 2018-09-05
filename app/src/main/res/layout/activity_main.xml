@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/defaultBackground"
+        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
 
@@ -31,6 +31,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorPrimaryRight"
+                    android:textStyle="bold"
                     android:drawableTop="@drawable/ic_qr_code_96"
                     android:text="@string/label_check_win_number_qr_code" />
                 <Button
@@ -38,6 +41,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorPrimaryRight"
+                    android:textStyle="bold"
                     android:drawableTop="@drawable/ic_finger_click_96"
                     android:text="@string/label_check_win_number_manual" />
             </TableRow>
@@ -51,6 +57,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:layout_margin="5dp"
+                    android:background="@color/colorPrimaryRight"
+                    android:textStyle="bold"
                     android:text="로또번호 생성기" />
             </TableRow>
         </TableLayout>

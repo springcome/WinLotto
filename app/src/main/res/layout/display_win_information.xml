@@ -6,8 +6,9 @@
     <!-- 당첨정보 표시 Layout -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/win_area_background"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimaryDark"
         android:orientation="vertical"
         android:paddingBottom="10dp">
 

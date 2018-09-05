@@ -3,14 +3,14 @@
     <item>
         <shape
             android:shape="rectangle">
-            <stroke android:width="0dp" android:color="#9FA8DA" />
-            <solid android:color="#9FA8DA" />
+            <stroke android:width="0dp" android:color="@color/colorPrimary" />
+            <solid android:color="@color/colorPrimary" />
         </shape>
     </item>
     <item android:bottom="1dp">
         <shape android:shape="rectangle">
-            <stroke android:width="0dp" android:color="#9FA8DA" />
-            <solid android:color="#7986CB" />
+            <stroke android:width="0dp" android:color="@color/colorPrimary" />
+            <solid android:color="@color/colorPrimaryDark" />
         </shape>
     </item>
 </layer-list>

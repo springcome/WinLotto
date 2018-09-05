@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">Win Lotto</string>
+    <string name="app_name">로또 로또</string>
+
+    <string name="label_check_win_number_qr_code">당첨번호확인(QR코드)</string>
+    <string name="label_check_win_number_manual">당첨번호확인(직접입력)</string>
 </resources>

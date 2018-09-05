@@ -27,8 +27,9 @@ public class LottoQuery extends AsyncTaskLoader<LottoWin> {
     private String drwNo;
     private Context context;
 
-    public LottoQuery(@NonNull Context context) {
+    public LottoQuery(@NonNull Context context, String drwNo) {
         super(context);
+        this.drwNo = drwNo;
         this.context = context;
     }
 

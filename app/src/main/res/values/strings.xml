@@ -3,4 +3,5 @@
 
     <string name="label_check_win_number_qr_code">당첨번호확인(QR코드)</string>
     <string name="label_check_win_number_manual">당첨번호확인(직접입력)</string>
+    <string name="label_make_random_win_number">로또번호 생성기</string>
 </resources>

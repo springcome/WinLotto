@@ -12,6 +12,7 @@
         android:background="@color/defaultBackground"
         android:orientation="vertical">
 
+
        <include
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
@@ -53,10 +54,5 @@
                     android:text="로또번호 생성기" />
             </TableRow>
         </TableLayout>
-
-
     </LinearLayout>
-
-
-
 </android.support.constraint.ConstraintLayout>

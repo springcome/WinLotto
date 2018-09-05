@@ -6,4 +6,5 @@
     <color name="winTextNormal">#DEDEDE</color>
     <color name="winTextSpecial">#FFFFFF</color>
     <color name="defaultBackground">#C5CAE9</color>
+    <color name="colorLottoBall">#C5CAE9</color>
 </resources>

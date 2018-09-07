@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#80C683</color>
-    <color name="colorPrimaryDark">#509556</color>
-    <color name="colorPrimaryRight">#B1F9B3</color>
-    <color name="colorAccent">#D4E157</color>
+    <color name="colorPrimary">#37464f</color>
+    <color name="colorPrimaryDark">#101f27</color>
+    <color name="colorPrimaryRight">#62717b</color>
+    <color name="colorAccent">#ff5252</color>
     <color name="winTextNormal">#DEDEDE</color>
     <color name="winTextSpecial">#FFFFFF</color>
     <color name="defaultBackground">#C5CAE9</color>

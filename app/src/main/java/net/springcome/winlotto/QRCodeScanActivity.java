@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -53,6 +54,11 @@ public class QRCodeScanActivity extends AppCompatActivity implements LoaderManag
 
             // Scan한 회차번호
             drwNo = scanList.get(0).getDrwNo();
+
+            if (Integer.parseInt(drwNo) > Integer.parseInt(LottoUtils.currentDrwNo(null))) {
+                Toast.makeText(getApplicationContext(), R.string.msg_can_not_win_number, Toast.LENGTH_LONG).show();
+                finish();
+            }
 
             // Query API of Lotto
             ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);

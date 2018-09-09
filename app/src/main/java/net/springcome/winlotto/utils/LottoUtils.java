@@ -167,4 +167,21 @@ public class LottoUtils {
         DecimalFormat df = new DecimalFormat("###,###");
         return df.format(Long.parseLong(price));
     }
+
+    /**
+     * 금액 Format - 억단위금액
+     * @param price
+     * @return
+     */
+    public static String aboutFormatPrice(String price) {
+
+
+        if (price.length() > 7) {
+            String strAboutPrice = price.substring(0, price.length()-7);
+            long aboutPrice = Math.round((Math.round((Double.valueOf(strAboutPrice)/1000)*100)/100.0)*100);
+            return formatPrice(Long.toString(aboutPrice));
+        } else {
+            return formatPrice(price);
+        }
+    }
 }

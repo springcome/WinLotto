@@ -18,56 +18,74 @@
            android:layout_height="wrap_content"
            layout="@layout/display_win_information"/>
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp">
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="0.5">
+            android:orientation="vertical"
+            android:padding="10dp">
+            <Button
+                android:id="@+id/btn_qr_code_scan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#7986CB"
+                android:drawableLeft="@drawable/ic_qr_code_96"
+                android:paddingLeft="20dp"
+                android:gravity="center|left"
+                android:drawablePadding="10dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:text="@string/label_check_win_number_qr_code"/>
+        </LinearLayout>
 
-                <Button
-                    android:id="@+id/btn_qr_code_scan"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorPrimaryRight"
-                    android:textStyle="bold"
-                    android:gravity="center|bottom"
-                    android:paddingBottom="10dp"
-                    android:drawableTop="@drawable/ic_qr_code_96"
-                    android:text="@string/label_check_win_number_qr_code" />
+        <!--<TableLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_margin="5dp">-->
+            <!--<TableRow-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="0.5">-->
 
-                <Button
-                    android:id="@+id/btn_manual_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorPrimaryRight"
-                    android:textStyle="bold"
-                    android:gravity="center|bottom"
-                    android:paddingBottom="10dp"
-                    android:drawableTop="@drawable/ic_finger_click_96"
-                    android:text="@string/label_check_win_number_manual" />
-            </TableRow>
+                <!--<Button-->
+                    <!--android:id="@+id/btn_qr_code_scan"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_margin="5dp"-->
+                    <!--android:gravity="center|bottom"-->
+                    <!--android:paddingBottom="10dp"-->
+                    <!--android:drawableTop="@drawable/ic_qr_code_96"-->
+                    <!--android:background="@drawable/menu_button"-->
+                    <!--android:text="@string/label_check_win_number_qr_code" />-->
 
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-                <Button
-                    android:id="@+id/btn_make_win_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorPrimaryRight"
-                    android:textStyle="bold"
-                    android:text="@string/label_make_random_win_number" />
-            </TableRow>
-        </TableLayout>
+                <!--<Button-->
+                    <!--android:id="@+id/btn_manual_input"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_margin="5dp"-->
+                    <!--android:background="@color/colorPrimaryRight"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:gravity="center|bottom"-->
+                    <!--android:paddingBottom="10dp"-->
+                    <!--android:drawableTop="@drawable/ic_finger_click_96"-->
+                    <!--android:text="@string/label_check_win_number_manual" />-->
+            <!--</TableRow>-->
+
+            <!--<TableRow-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_weight="1">-->
+                <!--<Button-->
+                    <!--android:id="@+id/btn_make_win_number"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_margin="5dp"-->
+                    <!--android:background="@color/colorPrimaryRight"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:text="@string/label_make_random_win_number" />-->
+            <!--</TableRow>-->
+        <!--</TableLayout>-->
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

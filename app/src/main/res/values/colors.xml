@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#37464f</color>
-    <color name="colorPrimaryDark">#101f27</color>
-    <color name="colorPrimaryRight">#62717b</color>
+    <color name="colorPrimary">#bdbdbd</color>
+    <color name="colorPrimaryDark">#8d8d8d</color>
+    <color name="colorPrimaryRight">#efefef</color>
+
     <color name="colorAccent">#ff5252</color>
+
+    <color name="colorTextPrimary">#FFFFFF</color>
+
     <color name="winTextNormal">#DEDEDE</color>
-    <color name="winTextSpecial">#FFFFFF</color>
+    <color name="winTextSpecial">#000000</color>
     <color name="defaultBackground">#C5CAE9</color>
     <color name="colorLottoBall">#C5CAE9</color>
 </resources>

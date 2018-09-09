@@ -8,14 +8,35 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/win_information_area"
         android:orientation="vertical"
-        android:paddingBottom="10dp">
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/winTextNormal"
+                android:text=" 추첨일자 : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/winTextSpecial"
+                android:text="2999-12-31"/>
+        </LinearLayout>
 
         <!-- 당첨정보 [회차] -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
             <TextView
@@ -23,15 +44,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@android:color/holo_blue_bright"
+                android:textColor="@color/winTextSpecial"
                 android:textStyle="bold"
                 android:textSize="30sp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
-                android:textColor="@android:color/darker_gray"
-                android:text="회 당첨번호"/>
+                android:textColor="@color/winTextNormal"
+                android:text=" 회 당첨번호"/>
         </LinearLayout>
 
         <!-- 당첨정보 [당첨번호] -->
@@ -43,83 +64,34 @@
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/view_drwtNo1"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:gravity="center"
-                android:textColor="@android:color/darker_gray"
-                android:layout_gravity="center_vertical"
-                android:text="1"
-                android:background="@drawable/lotto_circle"
-                android:textSize="16sp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                style="@style/LottoBallTheme"/>
             <TextView
                 android:id="@+id/view_drwtNo2"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:gravity="center"
-                android:textColor="@android:color/darker_gray"
-                android:layout_gravity="center_vertical"
-                android:text="2"
-                android:background="@drawable/lotto_circle"
-                android:textSize="16sp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                style="@style/LottoBallTheme"/>
             <TextView
                 android:id="@+id/view_drwtNo3"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:gravity="center"
-                android:textColor="@android:color/darker_gray"
-                android:layout_gravity="center_vertical"
-                android:text="3"
-                android:background="@drawable/lotto_circle"
-                android:textSize="16sp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                style="@style/LottoBallTheme"/>
             <TextView
                 android:id="@+id/view_drwtNo4"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:gravity="center"
-                android:textColor="@android:color/darker_gray"
-                android:layout_gravity="center_vertical"
-                android:text="4"
-                android:background="@drawable/lotto_circle"
-                android:textSize="16sp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                style="@style/LottoBallTheme"/>
             <TextView
                 android:id="@+id/view_drwtNo5"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:gravity="center"
-                android:textColor="@android:color/darker_gray"
-                android:layout_gravity="center_vertical"
-                android:text="5"
-                android:background="@drawable/lotto_circle"
-                android:textSize="16sp"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                style="@style/LottoBallTheme"/>
             <TextView
                 android:id="@+id/view_drwtNo6"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:gravity="center"
-                android:textColor="@android:color/darker_gray"
-                android:layout_gravity="center_vertical"
-                android:text="6"
-                android:background="@drawable/lotto_circle"
-                android:textSize="16sp"/>
+                style="@style/LottoBallTheme"/>
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/baseline_add_black_36dp"/>
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/add_24dp"/>
             <TextView
                 android:id="@+id/view_bnusNo"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:gravity="center"
-                android:textColor="@android:color/darker_gray"
-                android:layout_gravity="center_vertical"
-                android:text="7"
-                android:background="@drawable/lotto_circle"
-                android:textSize="16sp"/>
+                style="@style/LottoBallTheme"/>
         </LinearLayout>
 
         <!-- 당첨정보 [금액 정보] -->
@@ -133,31 +105,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/winTextNormal"
-                android:text="1등 "/>
+                android:text="1등 당첨자는 총 "/>
             <TextView
                 android:id="@+id/view_first_przwner_co"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/winTextSpecial"/>
+                android:textColor="@color/winTextSpecial"
+                android:text="1"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/winTextNormal"
-                android:text="게임 총 당첨금액 [ "/>
+                android:text=" 명, 총당첨금액은 약 "/>
             <TextView
                 android:id="@+id/view_first_accumamnt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/winTextSpecial"/>
+                android:textColor="@color/winTextSpecial"
+                android:text="1000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/winTextNormal"
-                android:text=" ]원"/>
+                android:text=" 억원 입니다."/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -169,19 +143,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/winTextNormal"
-                android:text="(1게임당 당첨금액 [ "/>
+                android:text="1등의 당첨금액 약 "/>
             <TextView
                 android:id="@+id/view_first_winamnt"
                 android:layout_width="wrap_content"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/winTextSpecial"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="1000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/winTextNormal"
-                android:text=" ]원)"/>
+                android:text=" 억원 입니다."/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

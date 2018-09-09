@@ -49,23 +49,23 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
 
-        // Manual input button
-        Button btnManual = findViewById(R.id.btn_manual_input);
-        btnManual.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "개발중", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        // Make random win number button
-        Button btnMakeNumber = findViewById(R.id.btn_make_win_number);
-        btnMakeNumber.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "개발중", Toast.LENGTH_LONG).show();
-            }
-        });
+//        // Manual input button
+//        Button btnManual = findViewById(R.id.btn_manual_input);
+//        btnManual.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getApplicationContext(), "개발중", Toast.LENGTH_LONG).show();
+//            }
+//        });
+//
+//        // Make random win number button
+//        Button btnMakeNumber = findViewById(R.id.btn_make_win_number);
+//        btnMakeNumber.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(getApplicationContext(), "개발중", Toast.LENGTH_LONG).show();
+//            }
+//        });
     }
 
     @NonNull
@@ -100,9 +100,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         TextView viewFirstPrzwnerCo = findViewById(R.id.view_first_przwner_co);
         viewFirstPrzwnerCo.setText(data.getFirstPrzwnerCo());
         TextView viewFirstAccumamnt = findViewById(R.id.view_first_accumamnt);
-        viewFirstAccumamnt.setText(LottoUtils.formatPrice(data.getFirstAccumamnt()));
+        viewFirstAccumamnt.setText(LottoUtils.aboutFormatPrice(data.getFirstAccumamnt()));
         TextView viewFirstWinamnt = findViewById(R.id.view_first_winamnt);
-        viewFirstWinamnt.setText(LottoUtils.formatPrice(data.getFirstWinamnt()));
+        viewFirstWinamnt.setText(LottoUtils.aboutFormatPrice(data.getFirstWinamnt()));
 
         TextView viewDrwtNo1 = findViewById(R.id.view_drwtNo1);
         viewDrwtNo1.setText(data.getDrwtNo1());

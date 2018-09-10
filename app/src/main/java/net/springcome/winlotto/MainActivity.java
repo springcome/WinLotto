@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         btnManual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "개발중", Toast.LENGTH_LONG).show();
+                Intent manual = new Intent(getApplicationContext(), ManualInputActivity.class);
+                startActivity(manual);
             }
         });
 //

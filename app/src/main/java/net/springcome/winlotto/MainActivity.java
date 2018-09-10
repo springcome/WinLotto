@@ -49,14 +49,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
 
-//        // Manual input button
-//        Button btnManual = findViewById(R.id.btn_manual_input);
-//        btnManual.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(getApplicationContext(), "개발중", Toast.LENGTH_LONG).show();
-//            }
-//        });
+        // Manual input button
+        Button btnManual = findViewById(R.id.btn_manual_input);
+        btnManual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "개발중", Toast.LENGTH_LONG).show();
+            }
+        });
 //
 //        // Make random win number button
 //        Button btnMakeNumber = findViewById(R.id.btn_make_win_number);

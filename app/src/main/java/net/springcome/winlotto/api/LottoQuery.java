@@ -8,6 +8,8 @@ import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
 
 import net.springcome.winlotto.entity.LottoWin;
+import net.springcome.winlotto.utils.DatabaseContract;
+import net.springcome.winlotto.utils.DatabaseHelper;
 import net.springcome.winlotto.utils.LottoUtils;
 
 import org.json.JSONException;
@@ -26,11 +28,13 @@ public class LottoQuery extends AsyncTaskLoader<LottoWin> {
     private final static String LOG_TAG = LottoQuery.class.getSimpleName();
     private String drwNo;
     private Context context;
+    private DatabaseHelper db;
 
     public LottoQuery(@NonNull Context context, String drwNo) {
         super(context);
         this.drwNo = drwNo;
         this.context = context;
+        db = new DatabaseHelper(context, DatabaseContract.DATABASE_NAME, DatabaseContract.DATABASE_VERSION);
     }
 
     public void setDrwNo(String drwNo) {
@@ -40,9 +44,17 @@ public class LottoQuery extends AsyncTaskLoader<LottoWin> {
     @Nullable
     @Override
     public LottoWin loadInBackground() {
-        String requestUrl = "http://www.nlotto.co.kr/common.do?method=getLottoNumber&drwNo=" + LottoUtils.currentDrwNo(drwNo);
+        LottoWin lottoWin = db.fetchOneDataForLottoHistory(LottoUtils.currentDrwNo(drwNo));
+        String requestUrl = "http://www.nlotto.co.kr/common.do?method=getLottoNumber&drwNo=";
+        if (lottoWin == null) {
+            requestUrl += LottoUtils.currentDrwNo(drwNo);
+            LottoWin queryResult = fetchLottoData(requestUrl);
+            db.insertLottoHistory(queryResult);
+            return queryResult;
+        } else {
+            return lottoWin;
+        }
 
-        return fetchLottoData(requestUrl);
     }
 
     public LottoWin fetchLottoData(String requestUrl) {

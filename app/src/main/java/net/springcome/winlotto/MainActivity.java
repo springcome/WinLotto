@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private LottoQuery lottoQuery;
-    List<LottoWin> winNumberList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @NonNull
     @Override
     public Loader<LottoWin> onCreateLoader(int id, @Nullable Bundle args) {
-//        return new LottoQuery(this, null);
         return initLoader();
     }
 

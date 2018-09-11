@@ -21,6 +21,8 @@ import com.google.zxing.integration.android.IntentResult;
 import net.springcome.winlotto.adapter.LottoScanBaseAdapter;
 import net.springcome.winlotto.api.LottoQuery;
 import net.springcome.winlotto.entity.LottoWin;
+import net.springcome.winlotto.utils.DatabaseContract;
+import net.springcome.winlotto.utils.DatabaseHelper;
 import net.springcome.winlotto.utils.LottoUtils;
 import net.springcome.winlotto.utils.QRScanParse;
 
@@ -33,6 +35,7 @@ public class QRCodeScanActivity extends AppCompatActivity implements LoaderManag
     private IntentIntegrator qrCodeScan;
     private List<LottoWin> scanList;
     private LottoQuery lottoQuery;
+    private DatabaseHelper db;
 
     private String drwNo;
 
@@ -44,6 +47,8 @@ public class QRCodeScanActivity extends AppCompatActivity implements LoaderManag
         // QR Code scan
         qrCodeScan = new IntentIntegrator(this);
         qrCodeScan.initiateScan();
+
+        db = new DatabaseHelper(getApplicationContext(), DatabaseContract.DATABASE_NAME, DatabaseContract.DATABASE_VERSION);
     }
 
     @Override

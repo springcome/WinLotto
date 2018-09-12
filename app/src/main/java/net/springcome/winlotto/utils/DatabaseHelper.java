@@ -30,6 +30,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void insertLottoHistory(LottoWin lotto) {
+        // 이미 저장된 회차의 당첨정보는 다시 저장하지 않는다.
+        if (fetchOneDataForLottoHistory(lotto.getDrwNo()) != null) {
+            return;
+        }
+
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();

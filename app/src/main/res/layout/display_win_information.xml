@@ -25,6 +25,7 @@
                 android:textColor="@color/winTextNormal"
                 android:text=" 추첨일자 : "/>
             <TextView
+                android:id="@+id/view_drw_no_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"

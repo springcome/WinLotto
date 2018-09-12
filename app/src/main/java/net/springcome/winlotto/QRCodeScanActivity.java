@@ -105,45 +105,6 @@ public class QRCodeScanActivity extends AppCompatActivity implements LoaderManag
         if (scanList != null)
             listView.setAdapter(new LottoScanBaseAdapter(getApplicationContext(), data, scanList));
 
-        TextView viewDrwNo = findViewById(R.id.view_drwNo);
-        viewDrwNo.setText(data.getDrwNo());
-
-        TextView viewDrwNoDate = findViewById(R.id.view_drw_no_date);
-        viewDrwNoDate.setText(data.getDrwNoDate());
-
-        TextView viewFirstPrzwnerCo = findViewById(R.id.view_first_przwner_co);
-        viewFirstPrzwnerCo.setText(data.getFirstPrzwnerCo());
-        TextView viewFirstAccumamnt = findViewById(R.id.view_first_accumamnt);
-        viewFirstAccumamnt.setText(LottoUtils.aboutFormatPrice(data.getFirstAccumamnt()));
-        TextView viewFirstWinamnt = findViewById(R.id.view_first_winamnt);
-        viewFirstWinamnt.setText(LottoUtils.aboutFormatPrice(data.getFirstWinamnt()));
-
-        TextView viewDrwtNo1 = findViewById(R.id.view_drwtNo1);
-        viewDrwtNo1.setText(data.getDrwtNo1());
-        viewDrwtNo1.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo1()))));
-
-        TextView viewDrwtNo2 = findViewById(R.id.view_drwtNo2);
-        viewDrwtNo2.setText(data.getDrwtNo2());
-        viewDrwtNo2.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo2()))));
-
-        TextView viewDrwtNo3 = findViewById(R.id.view_drwtNo3);
-        viewDrwtNo3.setText(data.getDrwtNo3());
-        viewDrwtNo3.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo3()))));
-
-        TextView viewDrwtNo4 = findViewById(R.id.view_drwtNo4);
-        viewDrwtNo4.setText(data.getDrwtNo4());
-        viewDrwtNo4.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo4()))));
-
-        TextView viewDrwtNo5 = findViewById(R.id.view_drwtNo5);
-        viewDrwtNo5.setText(data.getDrwtNo5());
-        viewDrwtNo5.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo5()))));
-
-        TextView viewDrwtNo6 = findViewById(R.id.view_drwtNo6);
-        viewDrwtNo6.setText(data.getDrwtNo6());
-        viewDrwtNo6.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getDrwtNo6()))));
-
-        TextView viewBnusNo = findViewById(R.id.view_bnusNo);
-        viewBnusNo.setText(data.getBnusNo());
-        viewBnusNo.setBackground(LottoUtils.makeLottoBall(LottoUtils.getLottoColor(Integer.parseInt(data.getBnusNo()))));
+        LottoUtils.fillWinInformation(this, data);
     }
 }

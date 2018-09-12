@@ -108,6 +108,9 @@ public class QRCodeScanActivity extends AppCompatActivity implements LoaderManag
         TextView viewDrwNo = findViewById(R.id.view_drwNo);
         viewDrwNo.setText(data.getDrwNo());
 
+        TextView viewDrwNoDate = findViewById(R.id.view_drw_no_date);
+        viewDrwNoDate.setText(data.getDrwNoDate());
+
         TextView viewFirstPrzwnerCo = findViewById(R.id.view_first_przwner_co);
         viewFirstPrzwnerCo.setText(data.getFirstPrzwnerCo());
         TextView viewFirstAccumamnt = findViewById(R.id.view_first_accumamnt);

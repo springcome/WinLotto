@@ -6,20 +6,16 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import net.springcome.winlotto.api.LottoQuery;
 import net.springcome.winlotto.entity.LottoWin;
 import net.springcome.winlotto.utils.LottoUtils;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<LottoWin> {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();

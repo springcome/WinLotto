@@ -7,30 +7,31 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.TextView;
 
-public class JoinActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_join);
+        setContentView(R.layout.activity_login);
 
-        AppCompatButton btnSignup = findViewById(R.id.btn_signup);
-        btnSignup.setOnClickListener(new View.OnClickListener() {
+        AppCompatButton btnLogin = findViewById(R.id.btn_login);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                signup();
+                login();
             }
         });
 
-        TextView linkLogin = findViewById(R.id.link_login);
-        linkLogin.setOnClickListener(new View.OnClickListener() {
+        TextView linkSignup = findViewById(R.id.link_signup);
+        linkSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent signupIntent = new Intent(getApplicationContext(), JoinActivity.class);
+                startActivity(signupIntent);
             }
         });
     }
 
-    private void signup() {
+    private void login() {
     }
 }

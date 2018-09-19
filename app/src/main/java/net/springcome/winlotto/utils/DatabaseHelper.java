@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import net.springcome.winlotto.entity.LottoWin;
+import net.springcome.winlotto.entity.User;
 import net.springcome.winlotto.utils.DatabaseContract.*;
 
 import java.util.ArrayList;
@@ -29,6 +30,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /**
+     * 각 회차에 해당하는 당첨정보를 저장한다.
+     * @param lotto
+     */
     public void insertLottoHistory(LottoWin lotto) {
         // 이미 저장된 회차의 당첨정보는 다시 저장하지 않는다.
         if (fetchOneDataForLottoHistory(lotto.getDrwNo()) != null) {
@@ -53,6 +58,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(LottoHistory.FIRST_PRZWNER_CO, lotto.getFirstPrzwnerCo());
 
         db.insert(LottoHistory.TABLE_NAME, null, values);
+        db.close();
+    }
+
+    /**
+     * 사용자 정보 저장
+     * @param user
+     */
+    public void insertUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DatabaseContract.User.USER_ID, user.getUserId());
+        values.put(DatabaseContract.User.USER_NM, user.getUserNm());
+        values.put(DatabaseContract.User.USER_EMAIL, user.getUserNm());
+        values.put(DatabaseContract.User.USER_PWD, user.getUserNm());
+        values.put(DatabaseContract.User.USER_GRAD, user.getUserNm());
+        values.put(DatabaseContract.User.USER_USE_DATE, user.getUserNm());
+        values.put(DatabaseContract.User.USER_JOIN_DATE, user.getUserNm());
+
+        db.insert(DatabaseContract.User.TABLE_NAME, null, values);
         db.close();
     }
 

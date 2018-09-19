@@ -93,21 +93,27 @@ public final class DatabaseContract {
     public static final class User implements  BaseColumns {
         public static final String TABLE_NAME = "user";
         public static final String _ID = BaseColumns._ID;
+        public static final String USER_ID = "user_id";
+        public static final String USER_NM = "user_nm";
         public static final String USER_EMAIL = "user_email";
         public static final String USER_PWD = "user_pwd";
         public static final String USER_GRAD = "user_grad";
-        public static final String USER_JOIN_DATE = "user_join_date";
+        public static final String USER_USE_DATE = "user_join_date";
+        public static final String USER_JOIN_DATE = "user_real_join_date";
 
         public static final String [] COLUMNS = {
-                USER_EMAIL, USER_PWD, USER_GRAD, USER_JOIN_DATE
+                USER_ID, USER_NM, USER_EMAIL, USER_PWD, USER_GRAD, USER_USE_DATE, USER_JOIN_DATE
         };
 
         public static final String CREATE_TABLE_SQL = "CREATE TABLE " + TABLE_NAME + " ("
                 + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + USER_EMAIL + " TEXT NOT NULL, "
-                + USER_PWD + " TEXT NOT NULL, "
+                + USER_ID + " TEXT NOT NULL, "
+                + USER_NM + " TEXT NULL, "
+                + USER_EMAIL + " TEXT NULL, "
+                + USER_PWD + " TEXT NULL, "
                 + USER_GRAD + " TEXT NOT NULL, "
-                + USER_JOIN_DATE + " TEXT NOT NULL)";
+                + USER_USE_DATE + " TEXT NOT NULL, "
+                + USER_JOIN_DATE + " TEXT NULL)";
         public static final String DROP_TABLE_SQL = "DROP TABLE IF EXISTS " + TABLE_NAME;
     }
 }

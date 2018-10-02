@@ -6,8 +6,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +33,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private LottoQuery lottoQuery;
+
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +83,32 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 //                Toast.makeText(getApplicationContext(), "개발중", Toast.LENGTH_LONG).show();
 //            }
 //        });
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.activity_main);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        navigationView = (NavigationView) findViewById(R.id.nv);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch (id) {
+//                    case R.id.account:
+//                        Toast.makeText(getApplicationContext(), "My Account", Toast.LENGTH_SHORT).show();
+//                    case R.id.settings:
+//                        Toast.makeText(getApplicationContext(), "My Account", Toast.LENGTH_SHORT).show();
+//                    case R.id.mycart:
+//                        Toast.makeText(getApplicationContext(), "My Account", Toast.LENGTH_SHORT).show();
+                    default:
+                        return true;
+                }
+            }
+        });
     }
 
     @Override
@@ -87,13 +120,17 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_action_login:
-                Intent joinIntent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(joinIntent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        } else {
+            switch (item.getItemId()) {
+                case R.id.menu_action_login:
+                    Intent joinIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(joinIntent);
+                    return true;
+                default:
+                    return super.onOptionsItemSelected(item);
+            }
         }
     }
 

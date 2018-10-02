@@ -21,6 +21,7 @@ import net.springcome.winlotto.api.UserQuery;
 import net.springcome.winlotto.entity.LottoWin;
 import net.springcome.winlotto.entity.User;
 import net.springcome.winlotto.utils.LottoUtils;
+import net.springcome.winlotto.utils.SaveSharedPreference;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<LottoWin> {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
@@ -32,7 +33,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        checkUserInformation();
+        // Check if User is Already Logged In
+        if (!SaveSharedPreference.getLoggedStatus(getApplicationContext())) {
+            checkUserInformation();
+        }
 
         // Query Lotto API
         ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -99,15 +103,20 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         LottoUtils.fillWinInformation(this, data);
     }
 
+    /**
+     * 임시 User ID가 생성되어 있지 않으면 생성후 Preference 저장
+     */
     private void checkUserInformation() {
         try {
             User user = new UserAsynQuery().execute(0).get();
-            Log.i(LOG_TAG, user.getUserId());
-            Toast.makeText(getApplicationContext(), user.getUserId(), Toast.LENGTH_LONG).show();
+            if (user != null && !user.getUserId().isEmpty()) {
+                // Preference save
+                SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
+            }
         } catch (InterruptedException e) {
-
+            Log.e(LOG_TAG, e.getMessage());
         } catch (Exception e) {
-
+            Log.e(LOG_TAG, e.getMessage());
         }
     }
 }

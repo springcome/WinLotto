@@ -6,4 +6,7 @@
     <string name="label_make_random_win_number">로또번호 생성기</string>
 
     <string name="msg_can_not_win_number">아직 추첨되지 않은 복권입니다.</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

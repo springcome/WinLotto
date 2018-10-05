@@ -26,6 +26,9 @@ import net.springcome.winlotto.api.UserAsynQuery;
 import net.springcome.winlotto.api.UserQuery;
 import net.springcome.winlotto.entity.LottoWin;
 import net.springcome.winlotto.entity.User;
+import net.springcome.winlotto.utils.DatabaseContract;
+import net.springcome.winlotto.utils.DatabaseHelper;
+import net.springcome.winlotto.utils.DateUtils;
 import net.springcome.winlotto.utils.LottoUtils;
 import net.springcome.winlotto.utils.SaveSharedPreference;
 
@@ -170,7 +173,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             User user = new UserAsynQuery().execute(0).get();
             if (user != null && !user.getUserId().isEmpty()) {
                 // Preference save
-                SaveSharedPreference.setLoggedIn(getApplicationContext(), true);
+                SaveSharedPreference.setLoggedIn(getApplicationContext(), true, user.getUserId(), false);
+                user.setUserUseDate(DateUtils.getNowDate());
+                DatabaseHelper db = new DatabaseHelper(getApplicationContext(), DatabaseContract.DATABASE_NAME, DatabaseContract.DATABASE_VERSION);
+                db.insertUser(user);
             }
         } catch (InterruptedException e) {
             Log.e(LOG_TAG, e.getMessage());

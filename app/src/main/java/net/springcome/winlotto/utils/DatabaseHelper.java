@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import net.springcome.winlotto.entity.LottoWin;
 import net.springcome.winlotto.entity.User;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+    private static final String LOG_TAG = DatabaseHelper.class.getSimpleName();
 
     public DatabaseHelper(Context context, String dbName, int dbVersion) {
         super(context, dbName, null, dbVersion);
@@ -22,11 +24,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DatabaseContract.LottoHistory.CREATE_TABLE_SQL);
+        db.execSQL(DatabaseContract.User.CREATE_TABLE_SQL);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(LottoHistory.DROP_TABLE_SQL);
+        db.execSQL(DatabaseContract.User.DROP_TABLE_SQL);
         onCreate(db);
     }
 
@@ -62,6 +66,62 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
+     * 사용자 아이디를 사용한 사용자 검색
+     * @param userId
+     * @return
+     */
+    public User fetchByUserID(String userId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(
+                DatabaseContract.User.TABLE_NAME
+                , DatabaseContract.User.COLUMNS
+                , DatabaseContract.User.USER_ID + " = ?"
+                , new String[]{userId}
+                , null
+                , null
+                , null
+        );
+        User user = null;
+        if (cursor.moveToFirst()) {
+            do {
+                user = converCursorToUserEntity(cursor);
+            } while (cursor.moveToNext());
+        }
+
+        return user;
+    }
+
+    /**
+     * 사용자 정보 UPDATE
+     * @param user
+     */
+    public int updateUser(User user) {
+        // 대상 사용자의 USER_ID를 체크
+        User dbUser = fetchByUserID(user.getUserId());
+        if (dbUser == null) {
+            // 업데이트 대상 사용자 USER_ID를 찾을수 없다.
+            Log.e(LOG_TAG, "업데이트 대상 사용자 USER_ID를 찾을수 없다.");
+            return 0;
+        }
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+//        ContentValues values = DatabaseUtils.userToContentValues(dbUser);
+        ContentValues values = new ContentValues();
+        values.put(DatabaseContract.User.USER_NM, user.getUserNm());
+        values.put(DatabaseContract.User.USER_EMAIL, user.getUserEmail());
+        values.put(DatabaseContract.User.USER_PWD, user.getUserPwd());
+        values.put(DatabaseContract.User.USER_GRAD, "A");
+        values.put(DatabaseContract.User.USER_JOIN_DATE, user.getUserJoinDate());
+
+        return db.update(
+            DatabaseContract.User.TABLE_NAME
+            , values
+            , "_id = ?"
+            , new String[]{dbUser.get_id()});
+    }
+
+    /**
      * 사용자 정보 저장
      * @param user
      */
@@ -71,13 +131,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(DatabaseContract.User.USER_ID, user.getUserId());
         values.put(DatabaseContract.User.USER_NM, user.getUserNm());
-        values.put(DatabaseContract.User.USER_EMAIL, user.getUserNm());
-        values.put(DatabaseContract.User.USER_PWD, user.getUserNm());
-        values.put(DatabaseContract.User.USER_GRAD, user.getUserNm());
-        values.put(DatabaseContract.User.USER_USE_DATE, user.getUserNm());
-        values.put(DatabaseContract.User.USER_JOIN_DATE, user.getUserNm());
+        values.put(DatabaseContract.User.USER_EMAIL, user.getUserEmail());
+        values.put(DatabaseContract.User.USER_PWD, user.getUserPwd());
+        values.put(DatabaseContract.User.USER_GRAD, "T");
+        values.put(DatabaseContract.User.USER_USE_DATE, user.getUserUseDate());
+        values.put(DatabaseContract.User.USER_JOIN_DATE, user.getUserJoinDate());
 
         db.insert(DatabaseContract.User.TABLE_NAME, null, values);
+        db.close();
+    }
+
+    /**
+     * 임시사용자 -> 정식사용자
+     * @param user
+     */
+    public void joinUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
         db.close();
     }
 
@@ -123,6 +193,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return lottoWin;
     }
 
+    /**
+     * 복권정보 매핑
+     * @param cursor
+     * @return
+     */
     private LottoWin convertCursorToEntity(Cursor cursor) {
         LottoWin lottoWin = new LottoWin();
         lottoWin.setDrwNo(cursor.getString(cursor.getColumnIndexOrThrow(LottoHistory.DRW_NO)));
@@ -139,5 +214,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         lottoWin.setFirstWinamnt(cursor.getString(cursor.getColumnIndexOrThrow(LottoHistory.FIRST_WIN_AMNT)));
         lottoWin.setFirstPrzwnerCo(cursor.getString(cursor.getColumnIndexOrThrow(LottoHistory.FIRST_PRZWNER_CO)));
         return lottoWin;
+    }
+
+    /**
+     * 사용자 정보 매핑
+     * @param cursor
+     * @return
+     */
+    private User converCursorToUserEntity(Cursor cursor) {
+        User user = new User();
+        user.set_id(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.User._ID)));
+        user.setUserId(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.User.USER_ID)));
+        user.setUserNm(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.User.USER_NM)));
+        user.setUserEmail(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.User.USER_EMAIL)));
+        user.setUserGrad(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.User.USER_GRAD)));
+        user.setUserUseDate(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.User.USER_USE_DATE)));
+        user.setUserJoinDate(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseContract.User.USER_JOIN_DATE)));
+        return user;
     }
 }

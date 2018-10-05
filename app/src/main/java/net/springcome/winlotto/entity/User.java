@@ -10,7 +10,7 @@ public class User {
     private String userEmail;       // 사용자 이메일
     private String userPwd;         // 사용자 비밀번호
     private String userGrad;        // 사용자 등급
-    private String useUseDate;      // 사용자 사용시작일
+    private String userUseDate;      // 사용자 사용시작일
     private String userJoinDate;    // 사용자 회원가입 일자
 
     public String get_id() {
@@ -61,12 +61,12 @@ public class User {
         this.userGrad = userGrad;
     }
 
-    public String getUseUseDate() {
-        return useUseDate;
+    public String getUserUseDate() {
+        return userUseDate;
     }
 
-    public void setUseUseDate(String useUseDate) {
-        this.useUseDate = useUseDate;
+    public void setUserUseDate(String useUseDate) {
+        this.userUseDate = useUseDate;
     }
 
     public String getUserJoinDate() {

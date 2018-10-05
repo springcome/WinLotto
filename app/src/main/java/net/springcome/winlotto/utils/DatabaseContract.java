@@ -91,6 +91,7 @@ public final class DatabaseContract {
 
     /**
      * 가입 사용자 정보
+     * USER_GRAD = {T-임시, A-정식, V-유료}
      */
     public static final class User implements  BaseColumns {
         public static final String TABLE_NAME = "user";
